@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+  border: none;
+  text-transform: uppercase;
+}
+
+.container {
+  min-height: 100vh;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-bottom: 60px;
+}
+.container form {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 1);
+  padding: 20px;
+  width: 600px;
+}
+.container form .inputBox {
+  margin-top: 20px;
+}
+.container form .inputBox input,
+.container form .inputBox select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  color: grey;
+}
+.container form .flexBox {
+  display: flex;
+  gap: 15px;
+}
+.container form .flexBox .inputBox {
+  flex: 1 1 115px;
+}
+.payBtn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  background-color: #5d82f0;
+  border-radius: 5px;
+}
+.payBtn:hover{
+    background-color: #003df2;
+    letter-spacing: 2px;
+}
+.cardContainer{
+    margin-bottom: 20px;
+    height: 250px;
+    width: 400px;
+    background:linear-gradient(45deg, #2cc755, #87ffa7);
+    border-radius: 5px;
+    box-shadow: 0 15px 25px rgba(0,0,0,.2);
+    padding:20px;
+}
+.cardContainer #cardNumberBox{
+    margin: 50px 0 50px 110px;
+}
+.cardContainer .flexbox{
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 0px;
+}

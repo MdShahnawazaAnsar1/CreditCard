@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="cardContainer">
+            <div id="cardNumberBox">#### #### #### ####</div>
+            <div class="flexbox">
+                <div class="cardHolderName">full name</div>
+                <div class="expiration">
+                    <span class="exp-year">vaid thru</span>
+                    <p id="validBox"></p>
+                </div>
+            </div>
+        </div>
+        <form action="">
+            <div class="inputBox">
+                <span></span>
+                <input placeholder="Card Number"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); numfunc()"
+                    type="text" maxlength="16" class="cardNumberInput">
+            </div>
+            <div class="inputBox">
+                <input placeholder="Name" oninput="nameFunc()" type="text" maxlength="20" class="cardNameInput">
+            </div>
+            <div class="flexBox">
+                <div class="inputBox">
+                    <input class="validInput" oninput=" validfunc()" type="number" maxlength="4"
+                        placeholder="Valid Thru">
+                </div>
+                <div class="inputBox">
+                    <input placeholder="CVV" type="number" maxlength="4" class="cvvInput">
+                </div>
+            </div>
+            <!-- <input type="submit" onsubmit="submitForm()" value="Pay" class="payBtn"> -->
+            <button type="button" class="payBtn" onclick="submitForm()">Pay</button>
+
+        </form>
+    </div>
+    <script>
+        document.querySelector('.cardNameInput').oninput = () => {
+            document.querySelector('.cardHolderName').innerText = document.querySelector('.cardNameInput').value
+        }
+       
+        const nameFunc = () => {
+            name = document.querySelector('.cardNameInput').value
+        }
+        const numfunc = () => {
+            cardNum = document.querySelector(".cardNumberInput").value
+            newCardNum = cardNum.match(/.{1,4}/g).join(' ');
+            document.getElementById('cardNumberBox').innerHTML = newCardNum
+        }
+        const validfunc = () => {
+            validTime = document.querySelector(".validInput").value
+            newvalidTime = validTime.match(/.{1,2}/g).join('/');
+            document.getElementById('validBox').innerHTML = newvalidTime
+        }
+        const submitForm = () => {
+            numfunc()
+            validfunc()
+            nameFunc()
+            var data = [];
+            data.push({ 'Card_Number': cardNum, card_holder: name, 'valid_time': validTime })
+            console.log(data)
+        }
+    </script>
+</body>
+
+</html>
