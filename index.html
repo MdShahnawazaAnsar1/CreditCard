@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-        <form >
+        <form>
             <div class="inputBox">
                 <span></span>
                 <input placeholder="Card Number" oninput=" numfunc()" type="text" maxlength="16"
@@ -32,7 +32,7 @@
             </div>
             <div class="flexBox">
                 <div class="inputBox">
-                    <input class="validInput" oninput=" validfunc()" type="number" maxlength="4"
+                    <input class="validInput" oninput="validfunc()" type="number" maxlength="4"
                         placeholder="Valid Thru">
                 </div>
                 <div class="inputBox">
@@ -41,9 +41,8 @@
             </div>
             <!-- <input type="submit" onsubmit="submitForm()" value="Pay" class="payBtn"> -->
             <button type="button" class="payBtn" onclick="submitForm()">Pay</button>
-
         </form>
-    </div>
+    </div>  
     <script>
         document.querySelector('.cardNameInput').oninput = () => {
             document.querySelector('.cardHolderName').innerText = document.querySelector('.cardNameInput').value
@@ -64,12 +63,13 @@
             newvalidTime = validTime.match(/.{1,2}/g).join('/');
             document.getElementById('validBox').innerHTML = newvalidTime
         }
+        var data = [];
         const submitForm = () => {
             numfunc()
             validfunc()
             nameFunc()
             cvvFunc()
-            var data = [];
+
             data.push({ 'Card_Number': cardNum, card_holder: name, 'valid_time': validTime, 'cvv': cvv })
             console.log(data)
         }
