@@ -24,9 +24,8 @@
         <form action="">
             <div class="inputBox">
                 <span></span>
-                <input placeholder="Card Number"
-                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); numfunc()"
-                    type="text" maxlength="16" class="cardNumberInput">
+                <input placeholder="Card Number" oninput=" numfunc()" type="text" maxlength="16"
+                    class="cardNumberInput">
             </div>
             <div class="inputBox">
                 <input placeholder="Name" oninput="nameFunc()" type="text" maxlength="20" class="cardNameInput">
@@ -37,7 +36,7 @@
                         placeholder="Valid Thru">
                 </div>
                 <div class="inputBox">
-                    <input placeholder="CVV" type="number" maxlength="4" class="cvvInput">
+                    <input placeholder="CVV" type="password" onchange="cvvFunc()" maxlength="3" class="cvvInput">
                 </div>
             </div>
             <!-- <input type="submit" onsubmit="submitForm()" value="Pay" class="payBtn"> -->
@@ -49,7 +48,9 @@
         document.querySelector('.cardNameInput').oninput = () => {
             document.querySelector('.cardHolderName').innerText = document.querySelector('.cardNameInput').value
         }
-       
+        const cvvFunc = () => {
+            cvv = document.querySelector('.cvvInput').value
+        }
         const nameFunc = () => {
             name = document.querySelector('.cardNameInput').value
         }
@@ -67,8 +68,9 @@
             numfunc()
             validfunc()
             nameFunc()
+            cvvFunc()
             var data = [];
-            data.push({ 'Card_Number': cardNum, card_holder: name, 'valid_time': validTime })
+            data.push({ 'Card_Number': cardNum, card_holder: name, 'valid_time': validTime, 'cvv': cvv })
             console.log(data)
         }
     </script>
